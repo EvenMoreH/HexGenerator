@@ -4,12 +4,12 @@
 #include <stdint.h>
 #include <time.h>
 
-void generate_hex_key(char *key, int length) {
-    const char hex_digits[] = "0123456789ABCDEF";
+void generateHexKey(char *key, int length) {
+    const char hexDigits[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     // Generate each character of the hex key
     for (int i = 0; i < length; ++i) {
-        key[i] = hex_digits[rand() % 16];  // Choose a random hex digit
+        key[i] = hexDigits[rand() % 36];  // Choose a random hexDigit
     }
 
     // Null-terminate the string
@@ -28,21 +28,21 @@ int main() {
     ^ (unsigned int)(uintptr_t)&entropy_source3;
     srand(seed);
 
-    int keys;   // How many Hexes to generate
-    int key_length;  // Desired length of the hex key
+    int keys;   // How many Hex Keys to generate
+    int keyLength;  // Desired length of each Hex Key
 
     printf("\nHow many keys should be generated?\n> ");
     scanf("%i", &keys);
     printf("How long should the keys be?\n> ");
-    scanf("%i", &key_length);
+    scanf("%i", &keyLength);
 
-    char hex_key[key_length + 1];  // +1 for the null terminator
+    char hexKey[keyLength + 1];  // +1 for the null terminator
 
     for (int i = 0; i < keys; i++)
     {
-        generate_hex_key(hex_key, key_length);
+        generateHexKey(hexKey, keyLength);
 
-        printf("Generated Hex Key #%i:\n%s\n\n", i + 1, hex_key);
+        printf("Generated Hex Key #%i:\n%s\n\n", i + 1, hexKey);
     }
 
     return 0;
