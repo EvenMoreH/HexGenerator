@@ -45,5 +45,7 @@ int main() {
         printf("Generated Hex Key #%i:\n%s\n\n", i + 1, hexKey);
     }
 
+    system("pause");
+
     return 0;
 }
